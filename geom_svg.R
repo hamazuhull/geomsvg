@@ -207,10 +207,10 @@ defineGeom <- function(n_path_obj_list, class_name, custom_grob, env = parent.en
       data <- ggplot2::remove_missing(
         df = data,
         na.rm = na.rm,
-        vars = c("x", "y"),
+        vars = c("x", "y", "size", "rotation"),
         name = class_name
       )
-      if (is.null(data) || nrow(data) == 0) return(grid::zeroGrob())
+      if (is.null(data) || nrow(data) == 0) return(grid::nullGrob())
       coord <- coord$transform(data, panel_params)
       
       # build the grob

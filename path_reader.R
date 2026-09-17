@@ -65,19 +65,19 @@ normalizeSVGPath <- function(path_obj_list) {
       style = path_obj$style,
       bezier = data.frame(
         seg_i = path_obj$bezier$seg_i,
-        sposx =  (path_obj$bezier$sposx - min_x) / size - 0.5,
-        sposy = -(path_obj$bezier$sposy - min_y) / size + 0.5,
-        sctlx =  (path_obj$bezier$sctlx - min_x) / size - 0.5,
-        sctly = -(path_obj$bezier$sctly - min_y) / size + 0.5,
-        dctlx =  (path_obj$bezier$dctlx - min_x) / size - 0.5,
-        dctly = -(path_obj$bezier$dctly - min_y) / size + 0.5,
-        dposx =  (path_obj$bezier$dposx - min_x) / size - 0.5,
-        dposy = -(path_obj$bezier$dposy - min_y) / size + 0.5
+        sposx =  (path_obj$bezier$sposx - min_x) / size - 0.5 + 0.5 * (size - width)/size,
+        sposy = -(path_obj$bezier$sposy - min_y) / size + 0.5 - 0.5 * (size - height)/size,
+        sctlx =  (path_obj$bezier$sctlx - min_x) / size - 0.5 + 0.5 * (size - width)/size,
+        sctly = -(path_obj$bezier$sctly - min_y) / size + 0.5 - 0.5 * (size - height)/size,
+        dctlx =  (path_obj$bezier$dctlx - min_x) / size - 0.5 + 0.5 * (size - width)/size,
+        dctly = -(path_obj$bezier$dctly - min_y) / size + 0.5 - 0.5 * (size - height)/size,
+        dposx =  (path_obj$bezier$dposx - min_x) / size - 0.5 + 0.5 * (size - width)/size,
+        dposy = -(path_obj$bezier$dposy - min_y) / size + 0.5 - 0.5 * (size - height)/size
       ),
       spline = data.frame(
         seg_i = path_obj$spline$seg_i,
-        x =  (path_obj$spline$x - min_x) / size - 0.5,
-        y = -(path_obj$spline$y - min_y) / size + 0.5,
+        x =  (path_obj$spline$x - min_x) / size - 0.5 + 0.5 * (size - width)/size,
+        y = -(path_obj$spline$y - min_y) / size + 0.5 - 0.5 * (size - height)/size,
         s = path_obj$spline$s
       )
     )
